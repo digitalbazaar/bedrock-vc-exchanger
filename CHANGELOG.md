@@ -1,6 +1,6 @@
 # bedrock-vc-exchanger ChangeLog
 
-## 1.1.0 - 2022-03-xx
+## 1.1.0 - 2022-03-10
 
 ### Removed
 - Remove (non-breaking) unnecessary peer deps:
