@@ -32,7 +32,7 @@ TBD
 To install via NPM:
 
 ```
-npm install --save bedrock-vc-exchanger
+npm install --save @bedrock/vc-exchanger
 ```
 
 ### Development
