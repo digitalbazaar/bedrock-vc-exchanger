@@ -1,5 +1,15 @@
 # bedrock-vc-exchanger ChangeLog
 
+## 3.0.0 - 2022-04-xx
+
+### Changed
+- **BREAKING**: Update peer deps:
+  - `@bedrock/core@6`
+  - `@bedrock/app-identity@3`
+  - `@bedrock/express@8`
+  - `@bedrock/https-agent@4`
+  - `@bedrock/mongodb@10`.
+
 ## 2.0.0 - 2022-04-06
 
 ### Changed
