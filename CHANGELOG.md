@@ -1,5 +1,10 @@
 # bedrock-vc-exchanger ChangeLog
 
+## 3.1.0 - 2022-05-xx
+
+### Changed
+- Removed unused dependencies.
+
 ## 3.0.0 - 2022-04-29
 
 ### Changed
