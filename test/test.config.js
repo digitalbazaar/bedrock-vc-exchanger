@@ -6,6 +6,7 @@ import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import '@bedrock/https-agent';
 import '@bedrock/mongodb';
+import {testExchanges} from './mock.data.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -18,3 +19,6 @@ config.mongodb.dropCollections.collections = [];
 
 // allow self-signed certs in test framework
 config['https-agent'].rejectUnauthorized = false;
+
+// add the test exchanges to vc-exchanger
+config['vc-exchanger'].exchanges = testExchanges;
