@@ -23,4 +23,4 @@ export const shouldHaveVpForStep = ({
     {verifiablePresentationRequest},
     `Expected data from ${path} to match Vp from initial step.`
   );
-}
+};
