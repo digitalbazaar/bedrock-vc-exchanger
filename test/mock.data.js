@@ -6,7 +6,10 @@ export const testExchanges = {
         // this is a one step exchange
         next: null,
         verifiablePresentationRequest: {
-          query: []
+          query: [],
+          interact: {
+            service: []
+          }
         }
       }
     }
@@ -18,7 +21,10 @@ export const testExchanges = {
         // this is a one step exchange
         next: null,
         verifiablePresentationRequest: {
-          query: []
+          query: [],
+          interact: {
+            service: []
+          }
         }
       }
     }
@@ -29,13 +35,19 @@ export const testExchanges = {
         // this is a multi step exchange
         next: 'end',
         verifiablePresentationRequest: {
-          query: []
+          query: [],
+          interact: {
+            service: []
+          }
         }
       },
       end: {
         next: null,
         verifiablePresentationRequest: {
-          query: []
+          query: [],
+          interact: {
+            service: []
+          }
         }
       }
     }
