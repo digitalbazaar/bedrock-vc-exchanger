@@ -14,17 +14,8 @@ const exchangeInstance = '/exchange-instances/:exchangeInstanceId';
 
 describe('API', () => {
   describe(exchange, () => {
-    it('should get a VP from a valid service with only one step.', async () => {
+    it('should get a Vp from a valid service with only one step.', async () => {
       const path = 'exchanges/oneStep';
-      const {response, error, data} = await api.post({path});
-      shouldNotError({response, error, data, path});
-      const {
-        verifiablePresentationRequest
-      } = testExchanges.oneStep.steps.initial;
-      shouldHaveVpForStep({data, path, verifiablePresentationRequest});
-    });
-    it('should get a VP from a valid service with two steps.', async () => {
-      const path = 'exchanges/multiStep';
       const {response, error, data} = await api.post({path});
       shouldNotError({response, error, data, path});
       const {
@@ -42,10 +33,42 @@ describe('API', () => {
       const {response, error, data} = await api.post({path});
       shouldError({response, error, data, path});
     });
-
+    it('should error if in interact a service has an invalid type.',
+      async () => {
+        const path = 'exchanges/invalidServiceType';
+        const {response, error, data} = await api.post({path});
+        shouldError({response, error, data, path});
+      });
   });
   describe(`${exchange}/:transactionId`, () => {
-
+    it('should return a service with a transactionId', async () => {
+      const path = 'exchanges/multiStepUnmediated';
+      const {response, error, data} = await api.post({path});
+      shouldNotError({response, error, data, path});
+      const {
+        verifiablePresentationRequest
+      } = testExchanges.oneStep.steps.initial;
+      data.should.be.an(
+        'object',
+        `Expected data from ${path} to be an object.`
+      );
+      data.should.not.eql(
+        {verifiablePresentationRequest},
+        `Expected data from ${path} to not match Vp from initial step.`
+      );
+      should.exist(
+        data.verifiablePresentationRequest,
+        'Expected data to have property "verifiablePresentationRequest"'
+      );
+      data.verifiablePresentationRequest.should.be.an(
+        'object',
+        'Expected Vp to be an object'
+      );
+      should.exist(
+        data.verifiablePresentationRequest.interact,
+        'Expected Vp to have property `interact`.'
+      );
+    });
   });
   describe(`${exchangeInstance}/:stepId`, () => {
 

@@ -3,12 +3,27 @@ export const testExchanges = {
   oneStep: {
     steps: {
       initial: {
-        // this is a one step exchange
         next: null,
         verifiablePresentationRequest: {
           query: [],
           interact: {
             service: []
+          }
+        }
+      }
+    }
+  },
+  invalidServiceType: {
+    steps: {
+      initial: {
+        next: null,
+        verifiablePresentationRequest: {
+          query: [],
+          interact: {
+            service: [{
+              type: 'invalidServiceType',
+              serviceEndpointBasePath: '/exchanges'
+            }]
           }
         }
       }
@@ -29,7 +44,7 @@ export const testExchanges = {
       }
     }
   },
-  multiStep: {
+  multiStepUnmediated: {
     steps: {
       initial: {
         // this is a multi step exchange
@@ -37,7 +52,10 @@ export const testExchanges = {
         verifiablePresentationRequest: {
           query: [],
           interact: {
-            service: []
+            service: [{
+              type: 'UnmediatedPresentationService2021',
+              serviceEndpointBasePath: '/exchanges/'
+            }]
           }
         }
       },
