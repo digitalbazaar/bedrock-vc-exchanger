@@ -68,6 +68,26 @@ describe('API', () => {
         data.verifiablePresentationRequest.interact,
         'Expected Vp to have property `interact`.'
       );
+      const {interact} = data.verifiablePresentationRequest;
+      interact.should.be.an('object', 'Expected `interact` to be an Object');
+      should.exist(interact.service, 'Expected `interact.service` to exist.');
+      interact.service.should.be.an(
+        'Array',
+        'Expected `interact.service` to be an Array.'
+      );
+      interact.service.length.should.eql(1, 'Expected one `interact.service`.');
+      const [interactService] = interact.service;
+      should.exist(
+        interactService.type,
+        'Expected `interactService.type` to exist.'
+      );
+      should.exist(
+        interactService.serviceEndpoint,
+        'Expected `interactService.serviceEndpoint` to exist.'
+      );
+      const interactResponse = await api.post(
+        {path: interactService.serviceEndpoint});
+      console.log({interactResponse});
     });
   });
   describe(`${exchangeInstance}/:stepId`, () => {

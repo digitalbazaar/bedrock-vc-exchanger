@@ -10,7 +10,7 @@ const baseUrl = 'https://localhost:18443';
 
 export const api = {
   async post({path, json, headers}) {
-    const url = `${baseUrl}/${path}`;
+    const url = path.startsWith('http') ? path : `${baseUrl}/${path}`;
     let response;
     let error;
     try {
@@ -21,7 +21,7 @@ export const api = {
     return {response, error, data: response?.data};
   },
   async get({path, headers}) {
-    const url = `${baseUrl}/${path}`;
+    const url = path.startsWith('http') ? path : `${baseUrl}/${path}`;
     let response;
     let error;
     try {
