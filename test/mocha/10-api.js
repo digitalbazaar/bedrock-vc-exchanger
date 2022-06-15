@@ -43,32 +43,32 @@ describe('API', () => {
   describe(`${exchange}/:transactionId`, () => {
     it('should return a service with a transactionId', async () => {
       const path = 'exchanges/multiStepUnmediated';
-      const {response, error, data} = await api.post({path});
-      shouldNotError({response, error, data, path});
+      const initialResponse = await api.post({path});
+      shouldNotError({...initialResponse, path});
       const {
         verifiablePresentationRequest
       } = testExchanges.oneStep.steps.initial;
-      data.should.be.an(
+      initialResponse.data.should.be.an(
         'object',
         `Expected data from ${path} to be an object.`
       );
-      data.should.not.eql(
+      initialResponse.data.should.not.eql(
         {verifiablePresentationRequest},
         `Expected data from ${path} to not match Vp from initial step.`
       );
       should.exist(
-        data.verifiablePresentationRequest,
+        initialResponse.data.verifiablePresentationRequest,
         'Expected data to have property "verifiablePresentationRequest"'
       );
-      data.verifiablePresentationRequest.should.be.an(
+      initialResponse.data.verifiablePresentationRequest.should.be.an(
         'object',
         'Expected Vp to be an object'
       );
       should.exist(
-        data.verifiablePresentationRequest.interact,
+        initialResponse.data.verifiablePresentationRequest.interact,
         'Expected Vp to have property `interact`.'
       );
-      const {interact} = data.verifiablePresentationRequest;
+      const {interact} = initialResponse.data.verifiablePresentationRequest;
       interact.should.be.an('object', 'Expected `interact` to be an Object');
       should.exist(interact.service, 'Expected `interact.service` to exist.');
       interact.service.should.be.an(
@@ -85,9 +85,12 @@ describe('API', () => {
         interactService.serviceEndpoint,
         'Expected `interactService.serviceEndpoint` to exist.'
       );
-      const interactResponse = await api.post(
+      const interactResponse = await api.put(
         {path: interactService.serviceEndpoint});
-      console.log({interactResponse});
+      shouldNotError({
+        ...interactResponse,
+        path: interactService.serviceEndpoint
+      });
     });
   });
   describe(`${exchangeInstance}/:stepId`, () => {
