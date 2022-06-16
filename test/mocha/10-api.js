@@ -2,7 +2,10 @@
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
 import {api} from './helpers.js';
-import {testExchanges} from '../mock.data.js';
+import {
+  presentations,
+  testExchanges
+} from '../mock.data.js';
 import {
   shouldError,
   shouldNotError,
@@ -85,8 +88,10 @@ describe('API', () => {
         interactService.serviceEndpoint,
         'Expected `interactService.serviceEndpoint` to exist.'
       );
-      const interactResponse = await api.put(
-        {path: interactService.serviceEndpoint});
+      const interactResponse = await api.put({
+        path: interactService.serviceEndpoint,
+        json: presentations.one
+      });
       shouldNotError({
         ...interactResponse,
         path: interactService.serviceEndpoint
