@@ -70,11 +70,6 @@ export const testExchanges = {
       }
     }
   },
-  transactionOne: {
-    steps: {
-
-    }
-  },
   delegateOne: {
     steps: {
 
