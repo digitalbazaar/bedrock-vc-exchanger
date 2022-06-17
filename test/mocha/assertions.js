@@ -4,10 +4,16 @@ export const shouldNotError = ({response, error, data, path}) => {
   should.exist(data, `Expected path ${path} to return data.`);
 };
 
-export const shouldError = ({response, error, data, path}) => {
+export const shouldError = ({response, error, data, path, expected = {}}) => {
   should.exist(error, `Expected path ${path} to error.`);
   should.not.exist(response, `Expected path ${path} to not return a response.`);
   should.not.exist(data, `Expected path ${path} to not return data.`);
+  if(expected.status) {
+    error.response.status.should.equal(
+      expected.status,
+      `Expected status ${expected.status} from ${path}`
+    );
+  }
 };
 
 export const shouldHaveVpForStep = ({
