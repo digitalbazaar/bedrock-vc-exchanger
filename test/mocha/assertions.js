@@ -30,3 +30,30 @@ export const shouldHaveVpForStep = ({
     `Expected data from ${path} to match Vp from initial step.`
   );
 };
+
+export const shouldHaveVpWithTransactionId = ({
+  data,
+  path,
+  verifiablePresentationRequest
+}) => {
+  data.should.be.an(
+    'object',
+    `Expected data from ${path} to be an object.`
+  );
+  data.should.not.eql(
+    {verifiablePresentationRequest},
+    `Expected data from ${path} to not match Vp from initial step.`
+  );
+  should.exist(
+    data.verifiablePresentationRequest,
+    'Expected data to have property "verifiablePresentationRequest"'
+  );
+  data.verifiablePresentationRequest.should.be.an(
+    'object',
+    'Expected Vp to be an object'
+  );
+  should.exist(
+    data.verifiablePresentationRequest.interact,
+    'Expected Vp to have property `interact`.'
+  );
+};
