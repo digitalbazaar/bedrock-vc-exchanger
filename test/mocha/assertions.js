@@ -109,6 +109,22 @@ export const shouldBeDelegatedZcap = ({delegatedZcap, originalZcap}) => {
     'Expected delegatedZcap.id to not match the original zcap\'s id.'
   );
   should.exist(
+    delegatedZcap.controller,
+    'Expected delegatedZcap to have a controller.'
+  );
+  delegatedZcap.controller.should.be.a(
+    'string',
+    'Expected "delegatedZcap.controller" to be a string.'
+  );
+  should.exist(
+    delegatedZcap.expires,
+    'Expected delegatedZcap to have expires.'
+  );
+  delegatedZcap.expires.should.be.a(
+    'string',
+    'Expected "delegatedZcap.expires" to be a string.'
+  );
+  should.exist(
     delegatedZcap.parentCapability,
     'Expected "delegatedZcap.parentCapability" to exist.'
   );
