@@ -234,7 +234,7 @@ describe('API', () => {
 
   });
   describe(`${exchangeInstance}/:stepId/delegate`, () => {
-    it('should delegate zcaps for a step', async () => {
+    it.only('should delegate zcaps for a step', async () => {
       const path = 'exchanges/multiStepDelegated';
       const initialResponse = await api.post({path});
       shouldNotError({...initialResponse, path});
@@ -292,15 +292,14 @@ describe('API', () => {
       });
       const transactionId = interactService.serviceEndpoint.split('/').pop();
       const exchangeId = transactionId.split('-').shift();
-      const exchangePath = `exchange-instances/${exchangeId}/initial`;
+      const exchangePath = `exchange-instances/${exchangeId}/initial/delegate`;
       const exchangeStepResponse = await api.get({
         path: exchangePath,
         json: presentations.one
       });
       shouldNotError({
         ...exchangeStepResponse,
-        path: exchangePath,
-        expected: {status: 200}
+        path: exchangePath
       });
       exchangeStepResponse.data.should.eql(presentations.two);
     });
