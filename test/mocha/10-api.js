@@ -194,8 +194,6 @@ describe('API', () => {
         `Expected ${exchangePath} to return example delegated zcap.`
       );
       const delegatedZcap = exchangeStepResponse.data.example;
-      console.log(JSON.stringify({delegatedZcap}, null, 2));
-      console.log(JSON.stringify({exampleZcap}, null, 2));
       delegatedZcap.should.not.eql(
         presentations.two,
         'Expected delegated zcap got a presentation.'
@@ -251,6 +249,19 @@ describe('API', () => {
         exampleZcap.invocationTarget,
         'Expected "delegatedZcap.invocationTarget" to match ' +
           'original invocationTarget.'
+      );
+      should.exist(
+        delegatedZcap.proof,
+        'Expected "delegatedZcap.proof" to exist.'
+      );
+      delegatedZcap.proof.should.be.an(
+        'object',
+        'Expected "delegatedZcap.proof" to be an object.'
+      );
+      delegatedZcap.proof.should.not.equal(
+        exampleZcap.proof,
+        'Expected "delegatedZcap.proof" to not match ' +
+          'original proof.'
       );
     });
   });
