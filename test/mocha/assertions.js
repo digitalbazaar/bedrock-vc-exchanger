@@ -80,3 +80,71 @@ export const shouldHaveInteractService = ({interact}) => {
     'Expected serviceEndpoint to be a string.'
   );
 };
+
+export const shouldBeDelegatedZcap = ({delegatedZcap, originalZcap}) => {
+  delegatedZcap.should.not.eql(
+    originalZcap,
+    'Delegated zcap should not match original zcap.'
+  );
+  should.exist(
+    delegatedZcap['@context'],
+    'Expected delegatedZcap to have a context.'
+  );
+  delegatedZcap['@context'].should.be.an(
+    'Array',
+    'Expected delegatedZcap[\'@context\'] to be an array.'
+  );
+  delegatedZcap['@context'].should.eql(
+    originalZcap['@context'],
+    'Expected delegatedZcap[\'@context\'] to match ' +
+      'originalZcap[\'@context\']'
+  );
+  should.exist(delegatedZcap.id, 'Expected delegatedZcap to have an id.');
+  delegatedZcap.id.should.be.a(
+    'string',
+    'Expected "delegatedZcap.id" to be a string.'
+  );
+  delegatedZcap.id.should.not.equal(
+    originalZcap.id,
+    'Expected delegatedZcap.id to not match the original zcap\'s id.'
+  );
+  should.exist(
+    delegatedZcap.parentCapability,
+    'Expected "delegatedZcap.parentCapability" to exist.'
+  );
+  delegatedZcap.parentCapability.should.be.a(
+    'string',
+    'Expected "delegatedZcap.parentCapability" to be a string.'
+  );
+  delegatedZcap.parentCapability.should.not.equal(
+    originalZcap.parentCapability,
+    'Expected "delegatedZcap.parentCapability" to not match ' +
+      'original parentCapability.'
+  );
+  should.exist(
+    delegatedZcap.invocationTarget,
+    'Expected "delegatedZcap.invocationTarget" to exist.'
+  );
+  delegatedZcap.invocationTarget.should.be.a(
+    'string',
+    'Expected "delegatedZcap.invocationTarget" to be a string.'
+  );
+  delegatedZcap.invocationTarget.should.equal(
+    originalZcap.invocationTarget,
+    'Expected "delegatedZcap.invocationTarget" to match ' +
+      'original invocationTarget.'
+  );
+  should.exist(
+    delegatedZcap.proof,
+    'Expected "delegatedZcap.proof" to exist.'
+  );
+  delegatedZcap.proof.should.be.an(
+    'object',
+    'Expected "delegatedZcap.proof" to be an object.'
+  );
+  delegatedZcap.proof.should.not.equal(
+    originalZcap.proof,
+    'Expected "delegatedZcap.proof" to not match ' +
+      'original proof.'
+  );
+};
