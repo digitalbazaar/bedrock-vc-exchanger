@@ -10,7 +10,8 @@ import {
   shouldError,
   shouldNotError,
   shouldHaveVpForStep,
-  shouldHaveVpWithTransactionId
+  shouldHaveVpWithTransactionId,
+  shouldHaveInteractService
 } from './assertions.js';
 
 const exchange = '/exchanges/:exchangeId';
@@ -63,22 +64,8 @@ describe('API', () => {
         verifiablePresentationRequest
       });
       const {interact} = initialResponse.data.verifiablePresentationRequest;
-      interact.should.be.an('object', 'Expected `interact` to be an Object');
-      should.exist(interact.service, 'Expected `interact.service` to exist.');
-      interact.service.should.be.an(
-        'Array',
-        'Expected `interact.service` to be an Array.'
-      );
-      interact.service.length.should.eql(1, 'Expected one `interact.service`.');
+      shouldHaveInteractService({interact});
       const [interactService] = interact.service;
-      should.exist(
-        interactService.type,
-        'Expected `interactService.type` to exist.'
-      );
-      should.exist(
-        interactService.serviceEndpoint,
-        'Expected `interactService.serviceEndpoint` to exist.'
-      );
       const interactResponse = await api.put({
         path: interactService.serviceEndpoint,
         json: presentations.one
@@ -101,22 +88,8 @@ describe('API', () => {
         verifiablePresentationRequest
       });
       const {interact} = initialResponse.data.verifiablePresentationRequest;
-      interact.should.be.an('object', 'Expected `interact` to be an Object');
-      should.exist(interact.service, 'Expected `interact.service` to exist.');
-      interact.service.should.be.an(
-        'Array',
-        'Expected `interact.service` to be an Array.'
-      );
-      interact.service.length.should.eql(1, 'Expected one `interact.service`.');
+      shouldHaveInteractService({interact});
       const [interactService] = interact.service;
-      should.exist(
-        interactService.type,
-        'Expected `interactService.type` to exist.'
-      );
-      should.exist(
-        interactService.serviceEndpoint,
-        'Expected `interactService.serviceEndpoint` to exist.'
-      );
       const interactResponse = await api.put(
         {path: interactService.serviceEndpoint + 'notFound'});
       //FIXME this should probably be 404 as the user is requesting
@@ -145,26 +118,8 @@ describe('API', () => {
         verifiablePresentationRequest
       });
       const {interact} = initialResponse.data.verifiablePresentationRequest;
-      interact.should.be.an('object', 'Expected `interact` to be an Object');
-      should.exist(interact.service, 'Expected `interact.service` to exist.');
-      interact.service.should.be.an(
-        'Array',
-        'Expected `interact.service` to be an Array.'
-      );
-      interact.service.length.should.eql(1, 'Expected one `interact.service`.');
+      shouldHaveInteractService({interact});
       const [interactService] = interact.service;
-      should.exist(
-        interactService.type,
-        'Expected `interactService.type` to exist.'
-      );
-      should.exist(
-        interactService.serviceEndpoint,
-        'Expected `interactService.serviceEndpoint` to exist.'
-      );
-      interactService.serviceEndpoint.should.be.a(
-        'string',
-        'Expected serviceEndpoint to be a string.'
-      );
       const interactResponse = await api.put({
         path: interactService.serviceEndpoint,
         json: presentations.one
@@ -202,26 +157,8 @@ describe('API', () => {
         verifiablePresentationRequest
       });
       const {interact} = initialResponse.data.verifiablePresentationRequest;
-      interact.should.be.an('object', 'Expected `interact` to be an Object');
-      should.exist(interact.service, 'Expected `interact.service` to exist.');
-      interact.service.should.be.an(
-        'Array',
-        'Expected `interact.service` to be an Array.'
-      );
-      interact.service.length.should.eql(1, 'Expected one `interact.service`.');
+      shouldHaveInteractService({interact});
       const [interactService] = interact.service;
-      should.exist(
-        interactService.type,
-        'Expected `interactService.type` to exist.'
-      );
-      should.exist(
-        interactService.serviceEndpoint,
-        'Expected `interactService.serviceEndpoint` to exist.'
-      );
-      interactService.serviceEndpoint.should.be.a(
-        'string',
-        'Expected serviceEndpoint to be a string.'
-      );
       const interactResponse = await api.put({
         path: interactService.serviceEndpoint,
         json: presentations.two
