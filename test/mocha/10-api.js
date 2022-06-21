@@ -142,7 +142,6 @@ describe('API', () => {
       });
       exchangeStepResponse.data.should.eql(presentations.one);
     });
-
   });
   describe(`${exchangeInstance}/:stepId/delegate`, () => {
     it('should delegate zcaps for a step', async () => {
