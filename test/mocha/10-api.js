@@ -9,7 +9,8 @@ import {
 import {
   shouldError,
   shouldNotError,
-  shouldHaveVpForStep
+  shouldHaveVpForStep,
+  shouldHaveVpWithTransactionId
 } from './assertions.js';
 
 const exchange = '/exchanges/:exchangeId';
@@ -56,26 +57,11 @@ describe('API', () => {
       const {
         verifiablePresentationRequest
       } = testExchanges.oneStep.steps.initial;
-      initialResponse.data.should.be.an(
-        'object',
-        `Expected data from ${path} to be an object.`
-      );
-      initialResponse.data.should.not.eql(
-        {verifiablePresentationRequest},
-        `Expected data from ${path} to not match Vp from initial step.`
-      );
-      should.exist(
-        initialResponse.data.verifiablePresentationRequest,
-        'Expected data to have property "verifiablePresentationRequest"'
-      );
-      initialResponse.data.verifiablePresentationRequest.should.be.an(
-        'object',
-        'Expected Vp to be an object'
-      );
-      should.exist(
-        initialResponse.data.verifiablePresentationRequest.interact,
-        'Expected Vp to have property `interact`.'
-      );
+      shouldHaveVpWithTransactionId({
+        data: initialResponse.data,
+        path,
+        verifiablePresentationRequest
+      });
       const {interact} = initialResponse.data.verifiablePresentationRequest;
       interact.should.be.an('object', 'Expected `interact` to be an Object');
       should.exist(interact.service, 'Expected `interact.service` to exist.');
@@ -109,26 +95,11 @@ describe('API', () => {
       const {
         verifiablePresentationRequest
       } = testExchanges.oneStep.steps.initial;
-      initialResponse.data.should.be.an(
-        'object',
-        `Expected data from ${path} to be an object.`
-      );
-      initialResponse.data.should.not.eql(
-        {verifiablePresentationRequest},
-        `Expected data from ${path} to not match Vp from initial step.`
-      );
-      should.exist(
-        initialResponse.data.verifiablePresentationRequest,
-        'Expected data to have property "verifiablePresentationRequest"'
-      );
-      initialResponse.data.verifiablePresentationRequest.should.be.an(
-        'object',
-        'Expected Vp to be an object'
-      );
-      should.exist(
-        initialResponse.data.verifiablePresentationRequest.interact,
-        'Expected Vp to have property `interact`.'
-      );
+      shouldHaveVpWithTransactionId({
+        data: initialResponse.data,
+        path,
+        verifiablePresentationRequest
+      });
       const {interact} = initialResponse.data.verifiablePresentationRequest;
       interact.should.be.an('object', 'Expected `interact` to be an Object');
       should.exist(interact.service, 'Expected `interact.service` to exist.');
@@ -168,26 +139,11 @@ describe('API', () => {
       const {
         verifiablePresentationRequest
       } = testExchanges.oneStep.steps.initial;
-      initialResponse.data.should.be.an(
-        'object',
-        `Expected data from ${path} to be an object.`
-      );
-      initialResponse.data.should.not.eql(
-        {verifiablePresentationRequest},
-        `Expected data from ${path} to not match Vp from initial step.`
-      );
-      should.exist(
-        initialResponse.data.verifiablePresentationRequest,
-        'Expected data to have property "verifiablePresentationRequest"'
-      );
-      initialResponse.data.verifiablePresentationRequest.should.be.an(
-        'object',
-        'Expected Vp to be an object'
-      );
-      should.exist(
-        initialResponse.data.verifiablePresentationRequest.interact,
-        'Expected Vp to have property `interact`.'
-      );
+      shouldHaveVpWithTransactionId({
+        data: initialResponse.data,
+        path,
+        verifiablePresentationRequest
+      });
       const {interact} = initialResponse.data.verifiablePresentationRequest;
       interact.should.be.an('object', 'Expected `interact` to be an Object');
       should.exist(interact.service, 'Expected `interact.service` to exist.');
@@ -233,33 +189,18 @@ describe('API', () => {
 
   });
   describe(`${exchangeInstance}/:stepId/delegate`, () => {
-    it.only('should delegate zcaps for a step', async () => {
+    it('should delegate zcaps for a step', async () => {
       const path = 'exchanges/multiStepDelegated';
       const initialResponse = await api.post({path});
       shouldNotError({...initialResponse, path});
       const {
         verifiablePresentationRequest
       } = testExchanges.oneStep.steps.initial;
-      initialResponse.data.should.be.an(
-        'object',
-        `Expected data from ${path} to be an object.`
-      );
-      initialResponse.data.should.not.eql(
-        {verifiablePresentationRequest},
-        `Expected data from ${path} to not match Vp from initial step.`
-      );
-      should.exist(
-        initialResponse.data.verifiablePresentationRequest,
-        'Expected data to have property "verifiablePresentationRequest"'
-      );
-      initialResponse.data.verifiablePresentationRequest.should.be.an(
-        'object',
-        'Expected Vp to be an object'
-      );
-      should.exist(
-        initialResponse.data.verifiablePresentationRequest.interact,
-        'Expected Vp to have property `interact`.'
-      );
+      shouldHaveVpWithTransactionId({
+        data: initialResponse.data,
+        path,
+        verifiablePresentationRequest
+      });
       const {interact} = initialResponse.data.verifiablePresentationRequest;
       interact.should.be.an('object', 'Expected `interact` to be an Object');
       should.exist(interact.service, 'Expected `interact.service` to exist.');
