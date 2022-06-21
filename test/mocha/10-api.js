@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
-import {api} from './helpers.js';
+import {api, delegateRootZcap} from './helpers.js';
 import {
   presentations,
   testExchanges
@@ -159,6 +159,8 @@ describe('API', () => {
       const {interact} = initialResponse.data.verifiablePresentationRequest;
       shouldHaveInteractService({interact});
       const [interactService] = interact.service;
+      const exampleZcap = await delegateRootZcap();
+      presentations.two.capability.example = exampleZcap;
       const interactResponse = await api.put({
         path: interactService.serviceEndpoint,
         json: presentations.two
@@ -169,7 +171,8 @@ describe('API', () => {
       });
       const transactionId = interactService.serviceEndpoint.split('/').pop();
       const exchangeId = transactionId.split('-').shift();
-      const exchangePath = `exchange-instances/${exchangeId}/initial/delegate?controller=` +
+      const exchangeInstance = `exchange-instances/${exchangeId}/`;
+      const exchangePath = `${exchangeInstance}initial/delegate?controller=` +
         encodeURIComponent(presentations.two.capability.example.controller);
       const exchangeStepResponse = await api.get({
         path: exchangePath,
