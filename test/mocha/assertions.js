@@ -57,3 +57,26 @@ export const shouldHaveVpWithTransactionId = ({
     'Expected Vp to have property `interact`.'
   );
 };
+
+export const shouldHaveInteractService = ({interact}) => {
+  interact.should.be.an('object', 'Expected `interact` to be an Object');
+  should.exist(interact.service, 'Expected `interact.service` to exist.');
+  interact.service.should.be.an(
+    'Array',
+    'Expected `interact.service` to be an Array.'
+  );
+  interact.service.length.should.eql(1, 'Expected one `interact.service`.');
+  const [interactService] = interact.service;
+  should.exist(
+    interactService.type,
+    'Expected `interactService.type` to exist.'
+  );
+  should.exist(
+    interactService.serviceEndpoint,
+    'Expected `interactService.serviceEndpoint` to exist.'
+  );
+  interactService.serviceEndpoint.should.be.a(
+    'string',
+    'Expected serviceEndpoint to be a string.'
+  );
+};
