@@ -2,11 +2,16 @@
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
 
+import * as didKey from '@digitalbazaar/did-method-key';
 import {httpClient} from '@digitalbazaar/http-client';
 import {Agent} from 'node:https';
+import {Ed25519Signature2020} from '@digitalbazaar/ed25519-signature-2020';
+import {getCapabilitySigners, ZcapClient} from '@digitalbazaar/ezcap';
+import {decodeSecretKeySeed} from 'bnid';
 
 const agent = new Agent({rejectUnauthorized: false});
 const baseUrl = 'https://localhost:18443';
+const didKeyDriver = didKey.driver();
 
 const makeRequest = async ({url, json, headers, method}) => {
   let response;
@@ -34,4 +39,20 @@ export const api = {
     const url = path.startsWith('http') ? path : `${baseUrl}/${path}`;
     return makeRequest({url, headers, method: 'GET'});
   }
+};
+
+export const delegateRootZcap = async ({
+  secretKeySeed = process.env.DID_KEY_SECRET
+}) => {
+  const seed = decodeSecretKeySeed({secretKeySeed});
+  const {didDocument, keyPairs} = await didKeyDriver.generate({seed});
+  const {delegationSigner} = getCapabilitySigners({didDocument, keyPairs});
+  const zcapClient = new ZcapClient({
+    agent,
+    delegationSigner,
+    SuiteClass: Ed25519Signature2020
+  });
+  const invocationTarget = `${baseUrl}/delegateExample`;
+  const controller = 'did:key:z6MkogR2ZPr4ZGvLV2wZ7cWUamNMhpg3bkVeXARDBrKQVn2c';
+  return zcapClient.delegate({invocationTarget, controller});
 };
