@@ -44,7 +44,7 @@ export const api = {
 export const delegateRootZcap = async ({
   secretKeySeed = process.env.DID_KEY_SECRET
 } = {}) => {
-  const seed = decodeSecretKeySeed({secretKeySeed});
+  const seed = secretKeySeed ? decodeSecretKeySeed({secretKeySeed}) : undefined;
   const {didDocument, keyPairs} = await didKeyDriver.generate({seed});
   const {delegationSigner} = getCapabilitySigners({didDocument, keyPairs});
   const zcapClient = new ZcapClient({
