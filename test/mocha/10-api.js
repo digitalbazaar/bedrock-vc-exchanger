@@ -181,7 +181,77 @@ describe('API', () => {
         ...exchangeStepResponse,
         path: exchangePath
       });
-      exchangeStepResponse.data.should.eql(presentations.two);
+      should.exist(
+        exchangeStepResponse.data,
+        `Expected ${exchangePath} to return data`
+      );
+      exchangeStepResponse.data.should.be.an(
+        'object',
+        `Expected ${exchangePath} data to be an object`
+      );
+      should.exist(
+        exchangeStepResponse.data.example,
+        `Expected ${exchangePath} to return example delegated zcap.`
+      );
+      const delegatedZcap = exchangeStepResponse.data.example;
+      console.log(JSON.stringify({delegatedZcap}, null, 2));
+      console.log(JSON.stringify({exampleZcap}, null, 2));
+      delegatedZcap.should.not.eql(
+        presentations.two,
+        'Expected delegated zcap got a presentation.'
+      );
+      delegatedZcap.should.not.eql(
+        exampleZcap,
+        'Delegated zcap should not match original zcap.'
+      );
+      should.exist(
+        delegatedZcap['@context'],
+        'Expected delegatedZcap to have a context.'
+      );
+      delegatedZcap['@context'].should.be.an(
+        'Array',
+        'Expected delegatedZcap[\'@context\'] to be an array.'
+      );
+      delegatedZcap['@context'].should.eql(
+        exampleZcap['@context'],
+        'Expected delegatedZcap[\'@context\'] to match ' +
+          'exampleZcap[\'@context\']'
+      );
+      should.exist(delegatedZcap.id, 'Expected delegatedZcap to have an id.');
+      delegatedZcap.id.should.be.a(
+        'string',
+        'Expected "delegatedZcap.id" to be a string.'
+      );
+      delegatedZcap.id.should.not.equal(
+        exampleZcap.id,
+        'Expected delegatedZcap.id to not match the original zcap\'s id.'
+      );
+      should.exist(
+        delegatedZcap.parentCapability,
+        'Expected "delegatedZcap.parentCapability" to exist.'
+      );
+      delegatedZcap.parentCapability.should.be.a(
+        'string',
+        'Expected "delegatedZcap.parentCapability" to be a string.'
+      );
+      delegatedZcap.parentCapability.should.not.equal(
+        exampleZcap.parentCapability,
+        'Expected "delegatedZcap.parentCapability" to not match ' +
+          'original parentCapability.'
+      );
+      should.exist(
+        delegatedZcap.invocationTarget,
+        'Expected "delegatedZcap.invocationTarget" to exist.'
+      );
+      delegatedZcap.invocationTarget.should.be.a(
+        'string',
+        'Expected "delegatedZcap.invocationTarget" to be a string.'
+      );
+      delegatedZcap.invocationTarget.should.equal(
+        exampleZcap.invocationTarget,
+        'Expected "delegatedZcap.invocationTarget" to match ' +
+          'original invocationTarget.'
+      );
     });
   });
 });
