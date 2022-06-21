@@ -222,7 +222,6 @@ describe('API', () => {
       const exchangePath = `exchange-instances/${exchangeId}/initial`;
       const exchangeStepResponse = await api.get({
         path: exchangePath,
-        json: presentations.one
       });
       shouldNotError({
         ...exchangeStepResponse,
@@ -292,10 +291,10 @@ describe('API', () => {
       });
       const transactionId = interactService.serviceEndpoint.split('/').pop();
       const exchangeId = transactionId.split('-').shift();
-      const exchangePath = `exchange-instances/${exchangeId}/initial/delegate`;
+      const exchangePath = `exchange-instances/${exchangeId}/initial/delegate?controller=` +
+        encodeURIComponent(presentations.two.capability.example.controller);
       const exchangeStepResponse = await api.get({
         path: exchangePath,
-        json: presentations.one
       });
       shouldNotError({
         ...exchangeStepResponse,
