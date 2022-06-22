@@ -2,11 +2,11 @@
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
 import {config} from '@bedrock/core';
-import '@bedrock/https-agent';
-import '@bedrock/mongodb';
-import {testExchanges} from './mock.data.js';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
+import {testExchanges} from './mock.data.js';
+import '@bedrock/https-agent';
+import '@bedrock/mongodb';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
