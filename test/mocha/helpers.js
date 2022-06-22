@@ -12,31 +12,18 @@ const agent = new Agent({rejectUnauthorized: false});
 const baseUrl = 'https://localhost:18443';
 const didKeyDriver = didKey.driver();
 
-const makeRequest = async ({url, json, headers, method}) => {
-  let response;
-  let error;
-  try {
-    response = await httpClient(url, {
-      method, json, headers, agent
-    });
-  } catch(e) {
-    error = e;
-  }
-  return {response, error, data: response?.data};
-};
-
 export const api = {
   async post({path, json, headers}) {
     const url = path.startsWith('http') ? path : `${baseUrl}/${path}`;
-    return makeRequest({url, json, headers, method: 'POST'});
+    return _makeRequest({url, json, headers, method: 'POST'});
   },
   async put({path, json, headers}) {
     const url = path.startsWith('http') ? path : `${baseUrl}/${path}`;
-    return makeRequest({url, json, headers, method: 'PUT'});
+    return _makeRequest({url, json, headers, method: 'PUT'});
   },
   async get({path, headers}) {
     const url = path.startsWith('http') ? path : `${baseUrl}/${path}`;
-    return makeRequest({url, headers, method: 'GET'});
+    return _makeRequest({url, headers, method: 'GET'});
   }
 };
 
@@ -55,3 +42,17 @@ export const delegateRootZcap = async ({
   const controller = 'did:key:z6MkogR2ZPr4ZGvLV2wZ7cWUamNMhpg3bkVeXARDBrKQVn2c';
   return zcapClient.delegate({invocationTarget, controller});
 };
+
+async function _makeRequest({url, json, headers, method}) {
+  let response;
+  let error;
+  try {
+    response = await httpClient(url, {
+      method, json, headers, agent
+    });
+  } catch(e) {
+    error = e;
+  }
+  return {response, error, data: response?.data};
+}
+
