@@ -1,12 +1,12 @@
 /*!
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
+import {decodeSecretKeySeed} from 'bnid';
 import * as didKey from '@digitalbazaar/did-method-key';
-import {httpClient} from '@digitalbazaar/http-client';
-import {Agent} from 'node:https';
 import {Ed25519Signature2020} from '@digitalbazaar/ed25519-signature-2020';
 import {getCapabilitySigners, ZcapClient} from '@digitalbazaar/ezcap';
-import {decodeSecretKeySeed} from 'bnid';
+import {httpClient} from '@digitalbazaar/http-client';
+import {Agent} from 'node:https';
 
 const agent = new Agent({rejectUnauthorized: false});
 const baseUrl = 'https://localhost:18443';
