@@ -1,19 +1,19 @@
 /*!
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
-import {
-  shouldError,
-  shouldNotError,
-  shouldHaveVpForStep,
-  shouldHaveVpWithTransactionId,
-  shouldHaveInteractService,
-  shouldBeDelegatedZcap
-} from './assertions.js';
 import {api, delegateRootZcap} from './helpers.js';
 import {
   presentations,
   testExchanges
 } from '../mock.data.js';
+import {
+  shouldBeDelegatedZcap,
+  shouldError,
+  shouldHaveInteractService,
+  shouldHaveVpForStep,
+  shouldHaveVpWithTransactionId,
+  shouldNotError
+} from './assertions.js';
 
 const exchange = '/exchanges/:exchangeId';
 const exchangeInstance = '/exchange-instances/:exchangeInstanceId';
