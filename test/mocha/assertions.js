@@ -1,7 +1,6 @@
 /*!
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
-
 export function shouldNotError({response, error, data, path}) {
   should.not.exist(error, `Expected path ${path} to not error.`);
   should.exist(response, `Expected path ${path} to return a response.`);
