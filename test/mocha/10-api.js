@@ -20,7 +20,7 @@ const exchangeInstance = '/exchange-instances/:exchangeInstanceId';
 
 describe('API', () => {
   describe(exchange, () => {
-    it('should get a Vp from a valid service with only one step.', async () => {
+    it('should get a VP from a valid service with only one step', async () => {
       const path = 'exchanges/oneStep';
       const {response, error, data} = await api.post({path});
       shouldNotError({response, error, data, path});
