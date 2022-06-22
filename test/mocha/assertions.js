@@ -2,13 +2,13 @@
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
 
-export const shouldNotError = ({response, error, data, path}) => {
+export function shouldNotError({response, error, data, path}) {
   should.not.exist(error, `Expected path ${path} to not error.`);
   should.exist(response, `Expected path ${path} to return a response.`);
   should.exist(data, `Expected path ${path} to return data.`);
-};
+}
 
-export const shouldError = ({response, error, data, path, expected = {}}) => {
+export function shouldError({response, error, data, path, expected = {}}) {
   should.exist(error, `Expected path ${path} to error.`);
   should.not.exist(response, `Expected path ${path} to not return a response.`);
   should.not.exist(data, `Expected path ${path} to not return data.`);
@@ -18,13 +18,13 @@ export const shouldError = ({response, error, data, path, expected = {}}) => {
       `Expected status ${expected.status} from ${path}`
     );
   }
-};
+}
 
-export const shouldHaveVpForStep = ({
+export function shouldHaveVpForStep({
   data,
   path,
   verifiablePresentationRequest
-}) => {
+}) {
   data.should.be.an(
     'object',
     `Expected data from ${path} to be an object.`
@@ -33,13 +33,13 @@ export const shouldHaveVpForStep = ({
     {verifiablePresentationRequest},
     `Expected data from ${path} to match Vp from initial step.`
   );
-};
+}
 
-export const shouldHaveVpWithTransactionId = ({
+export function shouldHaveVpWithTransactionId({
   data,
   path,
   verifiablePresentationRequest
-}) => {
+}) {
   data.should.be.an(
     'object',
     `Expected data from ${path} to be an object.`
@@ -60,9 +60,9 @@ export const shouldHaveVpWithTransactionId = ({
     data.verifiablePresentationRequest.interact,
     'Expected Vp to have property `interact`.'
   );
-};
+}
 
-export const shouldHaveInteractService = ({interact}) => {
+export function shouldHaveInteractService({interact}) {
   interact.should.be.an('object', 'Expected `interact` to be an Object');
   should.exist(interact.service, 'Expected `interact.service` to exist.');
   interact.service.should.be.an(
@@ -83,9 +83,9 @@ export const shouldHaveInteractService = ({interact}) => {
     'string',
     'Expected serviceEndpoint to be a string.'
   );
-};
+}
 
-export const shouldBeDelegatedZcap = ({delegatedZcap, originalZcap}) => {
+export function shouldBeDelegatedZcap({delegatedZcap, originalZcap}) {
   delegatedZcap.should.not.eql(
     originalZcap,
     'Delegated zcap should not match original zcap.'
@@ -167,4 +167,4 @@ export const shouldBeDelegatedZcap = ({delegatedZcap, originalZcap}) => {
     'Expected "delegatedZcap.proof" to not match ' +
       'original proof.'
   );
-};
+}
