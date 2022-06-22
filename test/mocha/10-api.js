@@ -103,7 +103,6 @@ describe('API', () => {
         }
       });
     });
-
   });
   describe(`${exchangeInstance}/:stepId`, () => {
     it('should be able to get data for a step', async () => {
