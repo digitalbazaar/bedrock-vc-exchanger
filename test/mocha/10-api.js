@@ -29,7 +29,7 @@ describe('API', () => {
       } = testExchanges.oneStep.steps.initial;
       shouldHaveVpForStep({data, path, verifiablePresentationRequest});
     });
-    it('should error if service doesn\'t exist.', async () => {
+    it('should error if service doesn\'t exist', async () => {
       const path = 'exchanges/nonExistent';
       const {response, error, data} = await api.post({path});
       //FIXME this is a client error where the wrong service was
@@ -37,13 +37,13 @@ describe('API', () => {
       const expected = {status: 500};
       shouldError({response, error, data, path, expected});
     });
-    it('should error if service doesn\'t have an initial step.', async () => {
+    it('should error if service doesn\'t have an initial step', async () => {
       const path = 'exchanges/noInitialStep';
       const {response, error, data} = await api.post({path});
       const expected = {status: 500};
       shouldError({response, error, data, path, expected});
     });
-    it('should error if in interact a service has an invalid type.',
+    it('should error if in interact a service has an invalid type',
       async () => {
         const path = 'exchanges/invalidServiceType';
         const {response, error, data} = await api.post({path});
