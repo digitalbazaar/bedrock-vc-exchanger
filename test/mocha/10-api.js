@@ -34,7 +34,7 @@ describe('API', () => {
       const {response, error, data} = await api.post({path});
       //FIXME this is a client error where the wrong service was
       // requested and should probably return 404.
-      const expected = {status: 500};
+      const expected = {status: 404};
       shouldError({response, error, data, path, expected});
     });
     it('should error if service doesn\'t have an initial step', async () => {
