@@ -1,6 +1,6 @@
 # bedrock-vc-exchanger ChangeLog
 
-## 3.2.0 - 2022-08-xx
+## 3.2.0 - 2022-08-12
 
 ### Changed
 - Replace internal dependencies to remove esm.js-based CJS=>ESM transpilation.
