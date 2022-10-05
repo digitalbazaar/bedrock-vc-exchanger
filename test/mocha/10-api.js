@@ -91,8 +91,10 @@ describe('API', () => {
       const {interact} = initialResponse.data.verifiablePresentationRequest;
       shouldHaveInteractService({interact});
       const [interactService] = interact.service;
-      const interactResponse = await api.put(
-        {path: interactService.serviceEndpoint + 'notFound'});
+      const interactResponse = await api.put({
+        path: interactService.serviceEndpoint + 'notFound',
+        json: presentations.one
+      });
       //FIXME this should probably be 404 as the user is requesting
       // an incorrect instanceId
       shouldError({
