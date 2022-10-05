@@ -74,10 +74,7 @@ const initiateExchange = {
   anfOf: [object, vpRequestWithQuery]
 };
 
-export const schemas = [{
-  type: constants.VERIFIABLE_PRESENTATION,
-  schema: verifiablePresentation
-}, {
-  type: 'initiateExchange',
-  schema: initiateExchange
-}];
+export const schemas = {
+  initiateExchange,
+  verifiablePresentation
+};
