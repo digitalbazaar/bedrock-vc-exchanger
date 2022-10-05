@@ -6,7 +6,7 @@ const constants = {
   VERIFIABLE_PRESENTATION: 'VerifiablePresentation'
 };
 
-const verifiablePresentation = {
+export const verifiablePresentation = {
   title: 'Verifiable Presentation',
   type: 'object',
   required: [
@@ -62,19 +62,17 @@ const vpRequestWithQuery = {
   description: 'A Verifiable Presentations Request with a Query',
   type: 'object',
   additionalItems: true,
-  query: {
-    title: 'VP Request Query',
-    type: 'array',
-    items: {type: 'object'}
+  required: ['query'],
+  properties: {
+    query: {
+      title: 'VP Request Query',
+      type: 'array',
+      items: {type: 'object'}
+    }
   }
 };
 
-const initiateExchange = {
+export const initiateExchange = {
   title: 'Initiate Exchange Request',
   anfOf: [object, vpRequestWithQuery]
-};
-
-export const schemas = {
-  initiateExchange,
-  verifiablePresentation
 };
