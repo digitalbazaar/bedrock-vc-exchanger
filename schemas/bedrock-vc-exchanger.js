@@ -38,6 +38,10 @@ export const verifiablePresentation = {
         additionalItems: true
       }]
     },
+    holder: {
+      title: 'Verifiable Credential Holder',
+      type: 'string'
+    },
     verifiableCredential: {
       title: 'Verifiable Credential',
       anyOf: [{
