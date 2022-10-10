@@ -74,5 +74,5 @@ const vpRequestWithQuery = {
 
 export const initiateExchange = {
   title: 'Initiate Exchange Request',
-  anfOf: [object, vpRequestWithQuery]
+  anyOf: [object, vpRequestWithQuery]
 };
