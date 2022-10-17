@@ -23,7 +23,7 @@ const vpRequestWithQuery = {
   }
 };
 
-export const initiateExchange = () => ({
+export const initiateExchange = {
   title: 'Initiate Exchange Request',
   anyOf: [object, vpRequestWithQuery]
-});
+};
