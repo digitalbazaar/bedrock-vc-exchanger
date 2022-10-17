@@ -2,27 +2,6 @@
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
 
-const constants = {
-  CREDENTIALS_CONTEXT_V1_URL: 'https://www.w3.org/2018/credentials/v1',
-  VERIFIABLE_PRESENTATION: 'VerifiablePresentation'
-};
-
-export const verifiablePresentation = schemas => {
-  const schema = schemas.verifiablePresentation;
-  return schema({
-    required: ['@context', 'type'],
-    properties: {
-      '@context': {
-        title: 'JSON-LD context',
-        description: 'A JSON-LD Context',
-        type: 'array',
-        items: [{const: constants.CREDENTIALS_CONTEXT_V1_URL}],
-        additionalItems: {anyOf: [{type: 'string'}, {type: 'object'}]}
-      },
-    }
-  });
-};
-
 const object = {
   title: 'An object',
   description: 'An object',
