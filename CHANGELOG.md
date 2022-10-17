@@ -1,5 +1,11 @@
 # bedrock-vc-exchanger ChangeLog
 
+## 4.0.0 -
+
+### Added
+- **BREAKING**: Added json schema validators for `/exchanges/:exchangeId`.
+- **BREAKING**: Add json schema validators for `/exchanges/:exchangeId/:transactionId`.
+
 ## 3.2.0 - 2022-08-12
 
 ### Changed
