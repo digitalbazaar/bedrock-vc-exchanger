@@ -16,8 +16,8 @@ export const verifiablePresentation = schemas => {
         title: 'JSON-LD context',
         description: 'A JSON-LD Context',
         type: 'array',
-        prefixItems: [{const: constants.CREDENTIALS_CONTEXT_V1_URL}],
-        items: [{type: 'string'}]
+        items: [{const: constants.CREDENTIALS_CONTEXT_V1_URL}],
+        additionalItems: {anyOf: [{type: 'string'}, {type: 'object'}]}
       },
     }
   });
