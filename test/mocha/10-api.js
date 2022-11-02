@@ -67,7 +67,7 @@ describe('API', () => {
       const {interact} = initialResponse.data.verifiablePresentationRequest;
       shouldHaveInteractService({interact});
       const [interactService] = interact.service;
-      const interactResponse = await api.put({
+      const interactResponse = await api.post({
         path: interactService.serviceEndpoint,
         json: presentations.one
       });
@@ -91,7 +91,7 @@ describe('API', () => {
       const {interact} = initialResponse.data.verifiablePresentationRequest;
       shouldHaveInteractService({interact});
       const [interactService] = interact.service;
-      const interactResponse = await api.put({
+      const interactResponse = await api.post({
         path: interactService.serviceEndpoint + 'notFound',
         json: presentations.one
       });
