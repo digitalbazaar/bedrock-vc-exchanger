@@ -23,6 +23,16 @@ const vpRequestWithQuery = {
   }
 };
 
+export const bodyWithVerifiablePresentation = vpSchema => ({
+  title: 'Request with a Verifiable Presentation',
+  type: 'object',
+  additionalItems: true,
+  required: ['verifiablePresentation'],
+  properties: {
+    verifiablePresentation: vpSchema
+  }
+});
+
 export const initiateExchange = {
   title: 'Initiate Exchange Request',
   anyOf: [object, vpRequestWithQuery]
