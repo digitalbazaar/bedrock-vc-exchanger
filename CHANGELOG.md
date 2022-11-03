@@ -6,6 +6,9 @@
 - **BREAKING**: Add json schema validators for `/exchanges/:exchangeId`.
 - **BREAKING**: Add json schema validators for `/exchanges/:exchangeId/:transactionId`.
 
+### Changed
+- **BREAKING**: Change method for `/exchanges/:exchangeId/:transactionId` to POST.
+
 ## 3.2.0 - 2022-08-12
 
 ### Changed
