@@ -4,6 +4,10 @@
   "type": "module",
   "description": "Bedrock Verifiable Credential Exchanger",
   "main": "./lib/index.js",
+  "files": [
+    "lib/**/*.js",
+    "schemas/**/*.js"
+  ],
   "scripts": {
     "lint": "eslint ."
   },
@@ -40,7 +44,8 @@
     "@bedrock/core": "^6.0.0",
     "@bedrock/express": "^8.0.0",
     "@bedrock/https-agent": "^4.0.0",
-    "@bedrock/mongodb": "^10.0.0"
+    "@bedrock/mongodb": "^10.0.0",
+    "@bedrock/validation": "^7.1.0"
   },
   "devDependencies": {
     "eslint": "^8.18.0",

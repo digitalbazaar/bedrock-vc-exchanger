@@ -67,9 +67,9 @@ describe('API', () => {
       const {interact} = initialResponse.data.verifiablePresentationRequest;
       shouldHaveInteractService({interact});
       const [interactService] = interact.service;
-      const interactResponse = await api.put({
+      const interactResponse = await api.post({
         path: interactService.serviceEndpoint,
-        json: presentations.one
+        json: {verifiablePresentation: {...presentations.one}}
       });
       shouldNotError({
         ...interactResponse,
@@ -91,8 +91,10 @@ describe('API', () => {
       const {interact} = initialResponse.data.verifiablePresentationRequest;
       shouldHaveInteractService({interact});
       const [interactService] = interact.service;
-      const interactResponse = await api.put(
-        {path: interactService.serviceEndpoint + 'notFound'});
+      const interactResponse = await api.post({
+        path: interactService.serviceEndpoint + 'notFound',
+        json: {verifiablePresentation: {...presentations.one}}
+      });
       //FIXME this should probably be 404 as the user is requesting
       // an incorrect instanceId
       shouldError({
@@ -120,9 +122,9 @@ describe('API', () => {
       const {interact} = initialResponse.data.verifiablePresentationRequest;
       shouldHaveInteractService({interact});
       const [interactService] = interact.service;
-      const interactResponse = await api.put({
+      const interactResponse = await api.post({
         path: interactService.serviceEndpoint,
-        json: presentations.one
+        json: {verifiablePresentation: {...presentations.one}}
       });
       shouldNotError({
         ...interactResponse,
@@ -139,7 +141,11 @@ describe('API', () => {
         path: exchangePath,
         expected: {status: 200}
       });
-      exchangeStepResponse.data.should.eql(presentations.one);
+      exchangeStepResponse.data.should.eql({
+        verifiablePresentation: {
+          ...presentations.one
+        }
+      });
     });
   });
   describe(`${exchangeInstance}/:stepId/delegate`, () => {
@@ -160,9 +166,9 @@ describe('API', () => {
       const [interactService] = interact.service;
       const exampleZcap = await delegateRootZcap();
       presentations.two.capability.example = exampleZcap;
-      const interactResponse = await api.put({
+      const interactResponse = await api.post({
         path: interactService.serviceEndpoint,
-        json: presentations.two
+        json: {verifiablePresentation: {...presentations.two}}
       });
       shouldNotError({
         ...interactResponse,
