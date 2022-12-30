@@ -40,7 +40,7 @@
     "@bedrock/core": "^6.0.0",
     "@bedrock/express": "^8.0.0",
     "@bedrock/https-agent": "^4.0.0",
-    "@bedrock/mongodb": "^10.0.0"
+    "@bedrock/mongodb": "^11.0.0"
   },
   "devDependencies": {
     "eslint": "^8.18.0",
