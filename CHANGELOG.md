@@ -1,5 +1,11 @@
 # bedrock-vc-exchanger ChangeLog
 
+## 4.0.0 -
+
+### Changed
+- **BREAKING**: Changed usage of mongodb results to reflect Mongo Driver 4 API.
+- **BREAKING**: Upgrade to latest `@bedrock/mongodb`.
+
 ## 3.2.0 - 2022-08-12
 
 ### Changed
