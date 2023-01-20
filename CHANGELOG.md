@@ -1,5 +1,14 @@
 # bedrock-vc-exchanger ChangeLog
 
+## 4.0.0 - 2023-TBD
+
+### Changed
+- **BREAKING**: Update peer deps:
+  - `@bedrock/core@6.0.1`
+  - `@bedrock/app-identity@4`
+  - `@bedrock/express@8.1`
+  - `@bedrock/mongodb@10.1`.
+
 ## 3.2.0 - 2022-08-12
 
 ### Changed

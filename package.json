@@ -36,11 +36,11 @@
     "rfdc": "^1.3.0"
   },
   "peerDependencies": {
-    "@bedrock/app-identity": "^3.0.0",
-    "@bedrock/core": "^6.0.0",
-    "@bedrock/express": "^8.0.0",
+    "@bedrock/app-identity": "^4.0.0",
+    "@bedrock/core": "^6.0.1",
+    "@bedrock/express": "^8.1.0",
     "@bedrock/https-agent": "^4.0.0",
-    "@bedrock/mongodb": "^10.0.0"
+    "@bedrock/mongodb": "^10.1.0"
   },
   "devDependencies": {
     "eslint": "^8.18.0",
