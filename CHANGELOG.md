@@ -1,6 +1,6 @@
 # bedrock-vc-exchanger ChangeLog
 
-## 4.0.0 - 2023-TBD
+## 4.0.0 - 2023-01-23
 
 ### Changed
 - **BREAKING**: Update peer deps:
