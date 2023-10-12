@@ -5,6 +5,8 @@
 ### Changed
 - Use `@digitalbazaar/ed25519-signature-2020@5.2.0`. This version provides
   better safe mode protections when canonizing.
+- Use `@digitalbazaar/ezcap@4`. This version provides
+  better safe mode protections when canonizing.
 
 ## 4.0.0 - 2023-01-23
 
