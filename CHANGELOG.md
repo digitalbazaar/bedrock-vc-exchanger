@@ -1,6 +1,6 @@
 # bedrock-vc-exchanger ChangeLog
 
-## 4.1.0 - 2023-10-xx
+## 4.1.0 - 2023-10-12
 
 ### Changed
 - Use `@digitalbazaar/ed25519-signature-2020@5.2.0`. This version provides
