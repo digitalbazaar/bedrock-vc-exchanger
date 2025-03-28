@@ -10,6 +10,7 @@
 - Return passed `record` instead of resulting record from mongodb calls to
   enable using newer mongodb driver.
 - Do not pass `writeOptions` in database calls.
+- Remove unused `background` option from mongodb index creation.
 
 ## 4.1.0 - 2023-10-12
 
