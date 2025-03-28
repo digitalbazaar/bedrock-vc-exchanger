@@ -4,6 +4,8 @@
 
 ### Changed
 - **BREAKING**: Require Node.js >=20.
+- Return passed `record` instead of resulting record from mongodb calls to
+  enable using newer mongodb driver.
 
 ## 4.1.0 - 2023-10-12
 
