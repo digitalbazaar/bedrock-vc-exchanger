@@ -11,6 +11,8 @@
   enable using newer mongodb driver.
 - Do not pass `writeOptions` in database calls.
 - Remove unused `background` option from mongodb index creation.
+- Pass `includeResultMetadata: true` to `findOneAndUpdate` to ensure meta data
+  is always returned.
 
 ## 4.1.0 - 2023-10-12
 
