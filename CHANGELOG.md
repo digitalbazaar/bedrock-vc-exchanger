@@ -4,8 +4,11 @@
 
 ### Changed
 - **BREAKING**: Require Node.js >=20.
+
+### Fixed
 - Return passed `record` instead of resulting record from mongodb calls to
   enable using newer mongodb driver.
+- Do not pass `writeOptions` in database calls.
 
 ## 4.1.0 - 2023-10-12
 
