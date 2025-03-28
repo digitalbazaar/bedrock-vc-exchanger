@@ -1,6 +1,6 @@
 # bedrock-vc-exchanger ChangeLog
 
-## 5.0.0 - 2025-03-xx
+## 5.0.0 - 2025-03-27
 
 ### Changed
 - **BREAKING**: Require Node.js >=20.
