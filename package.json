@@ -1,6 +1,6 @@
 {
   "name": "@bedrock/vc-exchanger",
-  "version": "4.1.1-0",
+  "version": "5.0.0",
   "type": "module",
   "description": "Bedrock Verifiable Credential Exchanger",
   "main": "./lib/index.js",
