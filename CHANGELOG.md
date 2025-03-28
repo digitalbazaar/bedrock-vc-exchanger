@@ -4,7 +4,19 @@
 
 ### Changed
 - **BREAKING**: Require Node.js >=20.
+- Update dependencies.
+  - `@digitalbazaar/ed25519-signature-2020@5.4.0`.
+  - `@digitalbazaar/ezcap@4.1.0`.
+  - `rfdc@1.4.1`.
+- Update peer dependencies.
+  - `@bedrock/core@6.3.0`.
+  - `@bedrock/express@8.3.1`.
+  - `@bedrock/https-agent@4.1.0`.
+  - **BREAKING**: `@bedrock/mongodb@11`.
+    - Use MongoDB driver 6.x and update error names and details.
+    - See changelog for details.
 - Update dev dependencies.
+- Update test dependencies.
 
 ### Fixed
 - Return passed `record` instead of resulting record from mongodb calls to
