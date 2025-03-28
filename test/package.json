@@ -20,7 +20,10 @@
     "@bedrock/test": "^8.0.0",
     "@bedrock/vc-exchanger": "file:..",
     "@digitalbazaar/did-method-key": "^3.0.0",
+    "@digitalbazaar/ed25519-signature-2020": "^5.4.0",
+    "@digitalbazaar/ezcap": "^4.1.0",
     "@digitalbazaar/http-client": "^3.2.0",
+    "bnid": "^3.0.0",
     "c8": "^7.11.0",
     "cross-env": "^7.0.3"
   },
