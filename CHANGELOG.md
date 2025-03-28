@@ -4,6 +4,7 @@
 
 ### Changed
 - **BREAKING**: Require Node.js >=20.
+- Update dev dependencies.
 
 ### Fixed
 - Return passed `record` instead of resulting record from mongodb calls to
